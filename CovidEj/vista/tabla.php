@@ -8,9 +8,15 @@
     </tr>
   </thead>
           <tr>
-            <td><?=$data->getPais()?></td>
+            <td><?=$data->getPais()?>(Api)</td>
             <td><?=$data->getUltimaModificacion()?></td>
             <td><?=$data->getTotalRegistrados()?></td>
             <td><?=$data->getTotalMuertost()?></td>
+          </tr>
+          <tr>
+            <td><?=$dataAnt->getPais()?>(LeerAnterior)</td>
+            <td><?=$dataAnt->getUltimaModificacion()?></td>
+            <td><?=$dataAnt->getTotalRegistrados()?></td>
+            <td><?=$dataAnt->getTotalMuertost()?></td>
           </tr>
 </TABLE>

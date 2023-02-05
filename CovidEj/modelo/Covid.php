@@ -9,25 +9,26 @@ require_once("control/Pais.php");
         }
 
         static function LeerAnterior($pais){
-            $contecto = unserialize(file_get_contents("../Covid"));
-            /*$arr = array();
-            $i = 0;*/
+            $contecto = unserialize(file_get_contents("covid"));
             foreach($contecto as $aux){
                 if($aux->getPais() == $pais){
-                    return new Pais($aux);
+                    return $aux;
                 }
             }
         }
 
         static function Registrar($pais){
-            $actulizar = json_decode(file_get_contents($pais),JSON_OBJECT_AS_ARRAY);
-            $consul = array();
-            $i = 0;
-            foreach($actulizar as $datos){
-                
-                $consul[$i++]=new Pais($datos);
-            }
-            return file_put_contents($pais,$consul);
+            $contecto = unserialize(file_get_contents("covid"));
+            $actual = (new Covid)->Leer($pais);
+            
+            /*foreach($contecto as $aux){
+                if($aux->getPais() == $pais){*/
+                    array_push($contecto,$actual);
+                /*}
+            } */
+     
+            $serial = serialize($contecto);
+            file_put_contents("covid",$serial);
         }
     }
 ?>
